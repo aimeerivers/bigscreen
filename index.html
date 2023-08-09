@@ -46,10 +46,15 @@
     var numberOfImages = 12; // Update this to number of images
     var timeoutSeconds = 60;
     var images = [];
+    var preloadedImages = [];
 
     // Generate URLs for the images
     for (var i = 1; i <= numberOfImages; i++) {
-      images.push('images/image' + i + '.png');
+      var imageUrl = 'images/image' + i + '.png';
+      images.push(imageUrl);
+      var img = new Image();
+      img.src = imageUrl;
+      preloadedImages.push(img);
     }
 
     var currentIndex = 0;
