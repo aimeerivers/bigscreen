@@ -43,9 +43,32 @@
   </div>
 
   <script>
+    var numberOfImages = 12; // Update this to number of images
+    var timeoutSeconds = 60;
+    var images = [];
+
+    // Generate URLs for the images
+    for (var i = 1; i <= numberOfImages; i++) {
+      images.push('images/image' + i + '.png');
+    }
+
+    var currentIndex = 0;
+
+    function changeImage() {
+      currentIndex++;
+      if (currentIndex >= images.length) {
+        currentIndex = 0;
+      }
+      document.body.style.backgroundImage = "url('" + images[currentIndex] + "')";
+      setTimeout(changeImage, timeoutSeconds * 1000);
+    }
+
+    setTimeout(changeImage, timeoutSeconds * 1000);
+
+    // reload periodicaclly pick up new images
     setTimeout(function () {
       location.reload();
-    }, 5 * 60 * 1000);
+    }, numberOfImages * timeoutSeconds * 1000);
   </script>
 </body>
 
