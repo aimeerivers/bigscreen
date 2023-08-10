@@ -25,7 +25,7 @@
       border: 1px solid black;
       box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.3);
       padding: 15px;
-      font-size: 1.1em;
+      font-size: 0.9em;
       z-index: 100;
       border-radius: 8px;
     }
@@ -38,6 +38,7 @@
 
 <body>
   <div id="infoBox">
+    <p><strong><span id="pictureNumber">1</span> of <span id="pictureTotal">1</span></strong></p>
     <p>Want to add a new picture?</p>
     <p><a href="https://github.com/aimeerivers/bigscreen">github.com/aimeerivers/bigscreen</a></p>
   </div>
@@ -47,6 +48,10 @@
     var timeoutSeconds = 30;
     var images = [];
     var preloadedImages = [];
+
+    const pictureNumber = document.getElementById('pictureNumber');
+    const pictureTotal = document.getElementById('pictureTotal');
+    pictureTotal.innerHTML = numberOfImages;
 
     // Generate URLs for the images
     for (var i = 1; i <= numberOfImages; i++) {
@@ -64,6 +69,7 @@
       if (currentIndex >= images.length) {
         currentIndex = 0;
       }
+      pictureNumber.innerHTML = currentIndex + 1;
       document.body.style.backgroundImage = "url('" + images[currentIndex] + "')";
       setTimeout(changeImage, timeoutSeconds * 1000);
     }
