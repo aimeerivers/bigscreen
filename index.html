@@ -75,10 +75,9 @@
       }
       pictureNumber.innerHTML = currentIndex + 1;
       document.body.style.backgroundImage = "url('" + images[currentIndex] + "')";
-      setTimeout(changeImage, timeoutSeconds * 1000);
     }
 
-    setTimeout(changeImage, timeoutSeconds * 1000);
+    setInterval(changeImage, timeoutSeconds * 1000);
 
     // reload periodicaclly pick up new images
     setTimeout(function () {
